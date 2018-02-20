@@ -38,8 +38,8 @@ const invokeScepterLambdaServiceFunction = (
   injectedServiceName,
   injectedFunction
 ) => {
-  const region = utilities.valueOrDefault(injectedRegion, credentials.getIn(['environments', stage, 'aws', 'region']))
-  const account = utilities.valueOrDefault(injectedAccount, credentials.getIn(['environments', stage, 'aws', 'account']))
+  const region = utilities.valueOrDefault(injectedRegion, credentials.getIn(['environments', stage, 'provider', 'aws', 'region']))
+  const account = utilities.valueOrDefault(injectedAccount, credentials.getIn(['environments', stage, 'provider', 'aws', 'account']))
   const serviceName = utilities.valueOrDefault(injectedServiceName, services.getIn(['environments', stage, 'configuration', serviceKey, 'serviceName']))
   const func = utilities.valueOrDefault(injectedFunction, services.getIn(['environments', stage, 'configuration', serviceKey, 'function']))
   const lambda = new AWS.Lambda({ region })
